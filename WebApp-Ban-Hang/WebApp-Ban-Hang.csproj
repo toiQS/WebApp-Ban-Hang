@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-WebApp_Ban_Hang-ff0159f4-ec19-4600-81cf-2ad26467a8b6</UserSecretsId>
+    <RootNamespace>WebApp_Ban_Hang</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebApp-Ban-Hang.Entity\WebApp-Ban-Hang.Entity.csproj" />
+    <ProjectReference Include="..\WebApp-Ban-Hang.Presistence\WebApp-Ban-Hang.Presistence.csproj" />
+    <ProjectReference Include="..\WebApp-Ban-Hang.Services\WebApp-Ban-Hang.Services.csproj" />
+  </ItemGroup>
+
+</Project>
