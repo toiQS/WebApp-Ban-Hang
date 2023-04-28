@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Update.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebApp_Ban_Hang.Entity;
+﻿using WebApp_Ban_Hang.Entity;
 using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.Products
