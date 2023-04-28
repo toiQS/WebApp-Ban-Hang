@@ -5,10 +5,10 @@ namespace WebApp_Ban_Hang.Services.Categorys
     public interface ICategoryServices
     {
         IEnumerable<Category> ViewAll();
-        Category FindByName(string id);
+        Category FindByName(int id);
         Task CreateAsSync(Category Category);
         Task UpdateAsSync(Category Category);
-        Task DeleteById(string id);
-        Task CreateById(string id);
+        Task DeleteById(int id);
+        Task CreateById(int id);
     }
 }

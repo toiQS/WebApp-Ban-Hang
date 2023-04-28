@@ -25,23 +25,23 @@ namespace WebApp_Ban_Hang.Services.Products
             _context.Add(product);
             await _context.SaveChangesAsync();
         }
-        public async Task DeleteAsSync(string name)
+        public async Task DeleteAsSync(string id)
         {
-            _context.Remove(name);
+            _context.Remove(id);
             await _context.SaveChangesAsync();
         }
-        public Product FindByName(string name)
+        public Product FindByid(string id)
         {
-            return _context.Product.Where(x => x.Product_Line == name).FirstOrDefault();
+            return _context.Product.Where(x => x.Product_Line == id).FirstOrDefault();
         }
         public async Task UpdateAsSync(Product product)
         {
             _context.Update(product);
             await _context.SaveChangesAsync();
         }
-        public async Task UpdateByName(string name)
+        public async Task UpdateByid(string id)
         {
-            var product = FindByName(name);
+            var product = FindByid(id);
             _context.Update(product);
             await _context.SaveChangesAsync();
         }
