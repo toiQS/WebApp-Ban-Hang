@@ -23,5 +23,26 @@ namespace WebApp_Ban_Hang.Services.ProductWarrantys
         {
             return _context.ProductWarranty.Where(x => x.Product_ID == id).FirstOrDefault();
         }
+        public async Task CreateAsSync(ProductWarranty product)
+        {
+            _context.Add(product);
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteById(string id)
+        {
+            _context.Remove(id);
+            await _context.SaveChangesAsync();
+        }
+        public async Task UpdateAsSync(ProductWarranty product)
+        {
+            _context.Update(product);
+            await _context.SaveChangesAsync();
+        }
+        public async Task UpdateById(string id)
+        {
+            var product = FindById(id);
+            _context.Update(product);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -10,10 +10,10 @@ namespace WebApp_Ban_Hang.Services.Products
     public  interface IProductServices
     {
         IEnumerable<Product> ViewAll();
-         
+        Product FindById(string id);
         Task CreateAsSync(Product product);
-        Task DeleteByName(string name);
+        Task DeleteById(string id);
         Task UpdateAsSync(Product product);
-        Task UpdateByName(string name);
+        Task UpdateById(string id);
     }
 }
