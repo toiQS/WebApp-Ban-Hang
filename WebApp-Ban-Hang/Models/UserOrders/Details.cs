@@ -2,7 +2,7 @@
 
 namespace WebApp_Ban_Hang.Models.UserOrders
 {
-    public class Detail
+    public class Details
     {
         public int OrderID { get; set; }
         public string UserName { get; set; }

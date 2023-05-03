@@ -4,7 +4,7 @@ using WebApp_Ban_Hang.Entity;
 
 namespace WebApp_Ban_Hang.Models.ProductImages
 {
-    public class Detail
+    public class Details
     {
         public int ImageID { get; set; }
         public string ProductLine { get; set; }

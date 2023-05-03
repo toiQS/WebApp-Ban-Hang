@@ -2,7 +2,7 @@
 
 namespace WebApp_Ban_Hang.Models.Categorys
 {
-    public class Create
+    public class Creates
     {
         [Key, Required, MaxLength(10)]
         public int CategoryID { get; set; }

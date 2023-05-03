@@ -4,7 +4,7 @@ using WebApp_Ban_Hang.Entity;
 
 namespace WebApp_Ban_Hang.Models.UserDetails
 {
-    public class Create
+    public class Creates
     {
         [Key, Required, MaxLength(11)]
         public int UserDetailId { get; set; }

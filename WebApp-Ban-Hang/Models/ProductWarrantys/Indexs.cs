@@ -2,10 +2,10 @@
 
 namespace WebApp_Ban_Hang.Models.ProductWarrantys
 {
-    public class Create
+    public class Indexs
     {
-        [Key, Required, MaxLength(50)]
-        public string Product_ID { get; set; }
+        
+        
         public DateTime Purchased_At { get; set; }
         public DateTime Warranty_Period { get; set; }
         public string Product_Line { get; set; }

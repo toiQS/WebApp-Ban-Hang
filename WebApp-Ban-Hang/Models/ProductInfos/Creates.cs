@@ -4,7 +4,7 @@ using WebApp_Ban_Hang.Entity;
 
 namespace WebApp_Ban_Hang.Models.ProductInfos
 {
-    public class Create
+    public class Creates
     {
         [Key, Required, MaxLength(10)]
         public int Info_ID { get; set; }

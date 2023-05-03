@@ -1,6 +1,6 @@
 ﻿namespace WebApp_Ban_Hang.Models.ProductInfos
 {
-    public class Index
+    public class Indexs
     {
         public string Product_Line { get; set; }
     }

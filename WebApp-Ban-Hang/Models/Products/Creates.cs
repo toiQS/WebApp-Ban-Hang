@@ -2,7 +2,7 @@
 
 namespace WebApp_Ban_Hang.Models.Products
 {
-    public class CreateProductViewModel
+    public class Creates
     {
         [Key, Required(ErrorMessage ="Product Line is required"), MaxLength(50)]
         public string Product_Line { get; set; }

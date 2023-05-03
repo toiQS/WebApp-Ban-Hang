@@ -2,7 +2,7 @@
 
 namespace WebApp_Ban_Hang.Models.Products
 {
-    public class DetailProductViewModel
+    public class Details
     {
         public string Product_Line { get; set; }
         public string Product_Name { get; set; }

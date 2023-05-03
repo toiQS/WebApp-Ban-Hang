@@ -1,6 +1,6 @@
 ﻿namespace WebApp_Ban_Hang.Models.ProductWarrantys
 {
-    public class Detail
+    public class Details
     {
         public string Product_ID { get; set; }
         public DateTime Purchased_At { get; set; }

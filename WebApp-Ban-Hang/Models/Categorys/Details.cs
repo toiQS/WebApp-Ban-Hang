@@ -2,7 +2,7 @@
 
 namespace WebApp_Ban_Hang.Models.Categorys
 {
-    public class Detail
+    public class Details
     {
         
         public int CategoryID { get; set; }

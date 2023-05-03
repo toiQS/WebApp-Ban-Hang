@@ -2,7 +2,7 @@
 
 namespace WebApp_Ban_Hang.Models.Brands
 {
-    public class Create
+    public class Creates
     {
         [Key, Required, MaxLength(10)]
         public string BrandId { get; set; }
