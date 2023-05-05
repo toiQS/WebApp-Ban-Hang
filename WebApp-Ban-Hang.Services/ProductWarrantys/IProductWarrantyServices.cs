@@ -7,7 +7,7 @@ namespace WebApp_Ban_Hang.Services.ProductWarrantys
         IEnumerable<ProductWarranty> ViewAll();
         ProductWarranty FindById(string id);
         Task CreateAsSync(ProductWarranty product);
-        Task DeleteByName(string id);
+        Task DeleteById(string id);
         Task UpdateAsSync(ProductWarranty product);
         Task UpdateById(string id);
     }

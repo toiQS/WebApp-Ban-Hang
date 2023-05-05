@@ -10,8 +10,8 @@ namespace WebApp_Ban_Hang.Controllers
     public class ProductImagesController : Controller
     {
         private IWebHostEnvironment webHostEnvironment;
-        private ProductImageServices imageServices;
-        public ProductImagesController(IWebHostEnvironment webHostEnvironment, ProductImageServices imageServices)
+        private IProductImageServices imageServices;
+        public ProductImagesController(IWebHostEnvironment webHostEnvironment, IProductImageServices imageServices)
         {
             this.webHostEnvironment = webHostEnvironment;
             this.imageServices = imageServices;

@@ -78,7 +78,7 @@ namespace WebApp_Ban_Hang.Controllers
                 BrandId = product.BrandId,
                 CategoryID = product.CategoryID,
             };
-            return View(product);
+            return View(model);
         }
         [HttpGet]
         public IActionResult Edit(string id)
