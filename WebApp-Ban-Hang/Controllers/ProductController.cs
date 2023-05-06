@@ -154,7 +154,7 @@ namespace WebApp_Ban_Hang.Controllers
                 await productServices.DeleteById(model.Product_Line);
                 return RedirectToAction("Index");
             }
-            return View(model);
+            return View();
         }
     }
 }

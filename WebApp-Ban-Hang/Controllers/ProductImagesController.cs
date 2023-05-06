@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Server.IIS.Core;
 using WebApp_Ban_Hang.Entity;
 using WebApp_Ban_Hang.Models.ProductImages;
 using WebApp_Ban_Hang.Services.ProductImages;
@@ -130,7 +128,7 @@ namespace WebApp_Ban_Hang.Controllers
                 await imageServices.DeleteById(model.ImageID);
                 return RedirectToAction("Index");
             }
-            return View(model);
+            return View();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using WebApp_Ban_Hang.Entity;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebApp_Ban_Hang.Models.UserDetails
 {

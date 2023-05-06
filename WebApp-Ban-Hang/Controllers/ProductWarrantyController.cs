@@ -46,7 +46,7 @@ namespace WebApp_Ban_Hang.Controllers
                     Warranty_Period = model.Warranty_Period
                 };
             }
-            return View(model);
+            return View();
         }
         [HttpGet]
         public IActionResult Detail(string id)
@@ -95,7 +95,7 @@ namespace WebApp_Ban_Hang.Controllers
             model.Product_ID    = warranty.Product_ID;
             model.Warranty_Period = warranty.Warranty_Period;
             model.Purchased_At = warranty.Purchased_At;
-            return View(model);
+            return View();
         }
         [HttpGet]
         public IActionResult Delete(string id)
@@ -120,7 +120,7 @@ namespace WebApp_Ban_Hang.Controllers
                 await _services.DeleteById(model.Product_ID);
                 return RedirectToAction("Index");
             }
-            return View(model);
+            return View();
         }
     }
 }

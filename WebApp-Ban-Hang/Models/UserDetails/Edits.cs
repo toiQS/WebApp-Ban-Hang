@@ -1,6 +1,6 @@
 ﻿namespace WebApp_Ban_Hang.Models.UserDetails
 {
-    public class Details
+    public class Edits
     {
         public int UserDetailId { get; set; }
         public string UserName { get; set; }

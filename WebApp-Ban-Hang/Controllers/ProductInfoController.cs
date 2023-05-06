@@ -56,7 +56,7 @@ namespace WebApp_Ban_Hang.Controllers
                     Product_Infomation = info.Product_Infomation
                 };
             }
-            return View(info);
+            return View();
         }
         [HttpGet]
         public IActionResult Edit(int id)
@@ -82,7 +82,7 @@ namespace WebApp_Ban_Hang.Controllers
             info.Product_Line = current.Product_Line;
             info.Info_ID = current.Info_ID;
             info.Product_Infomation = current.Product_Infomation;
-            return View(info);
+            return View();
         }
         [HttpGet]
         public IActionResult Delete(int id)
@@ -106,7 +106,7 @@ namespace WebApp_Ban_Hang.Controllers
                 await _services.DeleteById(model.Info_ID);
                 return RedirectToAction("Index");
             }
-            return View(model);
+            return View();
         }
     }
 }
