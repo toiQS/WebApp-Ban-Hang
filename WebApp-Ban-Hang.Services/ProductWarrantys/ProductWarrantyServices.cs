@@ -3,7 +3,7 @@ using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.ProductWarrantys
 {
-    public class ProductWarrantyServices
+    public class ProductWarrantyServices : IProductWarrantyServices
     {
         private ApplicationDbContext _context;
         public ProductWarrantyServices(ApplicationDbContext context)

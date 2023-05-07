@@ -3,7 +3,7 @@ using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.UserDetails
 {
-    public class UserDetailServices
+    public class UserDetailServices : IUserDetailsServices
     {
         private ApplicationDbContext _context;
         public UserDetailServices(ApplicationDbContext context)
@@ -23,7 +23,7 @@ namespace WebApp_Ban_Hang.Services.UserDetails
             _context.Add(userDetail);
             await _context.SaveChangesAsync(); 
         }
-        public async Task DeleteAsSync(int id)
+        public async Task DeleteById(int id)
         {
             _context.Remove(id);
             await _context.SaveChangesAsync();

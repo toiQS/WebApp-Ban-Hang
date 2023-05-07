@@ -20,7 +20,7 @@ namespace WebApp_Ban_Hang.Controllers
         {
             var model = _services.ViewAll().Select(info => new Indexs
             {
-                Product_Line = info.ProductLine
+                Product_Line = info.Product_Line,
             }) ;
             return View(model);
         }

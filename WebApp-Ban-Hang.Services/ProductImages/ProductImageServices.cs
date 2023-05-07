@@ -4,7 +4,7 @@ using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.ProductImages
 {
-    public class ProductImageServices
+    public class ProductImageServices : IProductImageServices
     {
         private ApplicationDbContext _context;
         public ProductImageServices(ApplicationDbContext context)

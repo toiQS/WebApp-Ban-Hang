@@ -3,7 +3,7 @@ using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.ProductInfos
 {
-    public class ProductInfoServices
+    public class ProductInfoServices : IProductInfoServices
     {
         private ApplicationDbContext _context;
         public ProductInfoServices(ApplicationDbContext context)
@@ -14,7 +14,7 @@ namespace WebApp_Ban_Hang.Services.ProductInfos
         {
             return _context.ProductInfo.ToList();
         }
-        ProductInfo FindById(int id)
+        public ProductInfo FindById(int id)
         {
             return _context.ProductInfo.Where(x => x.Info_ID == id).FirstOrDefault();
         }

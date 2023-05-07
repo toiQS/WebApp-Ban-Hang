@@ -9,6 +9,6 @@ namespace WebApp_Ban_Hang.Services.Categorys
         Task CreateAsSync(Category Category);
         Task UpdateAsSync(Category Category);
         Task DeleteById(int id);
-        Task CreateById(int id);
+        Task UpdateById(int id);
     }
 }

@@ -3,7 +3,7 @@ using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.UserOrders
 {
-    public class UserOrderServices
+    public class UserOrderServices : IUserOrderServices
     {
         private ApplicationDbContext _context;
         public UserOrderServices(ApplicationDbContext context)

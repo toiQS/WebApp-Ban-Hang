@@ -9,6 +9,6 @@ namespace WebApp_Ban_Hang.Services.Brands
         Task CreateAsSync(Brand brand);
         Task UpdateAsSync(Brand brand);
         Task DeleteById(string id);
-        Task CreateById(string id);
+        Task UpdateById(string id);
     }
 }

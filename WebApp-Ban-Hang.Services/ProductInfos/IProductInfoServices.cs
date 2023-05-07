@@ -4,7 +4,7 @@ namespace WebApp_Ban_Hang.Services.ProductInfos
 {
     public interface IProductInfoServices
     {
-        IEnumerable<ProductImage> ViewAll();
+        IEnumerable<ProductInfo> ViewAll();
         ProductInfo FindById(int id);
         Task CreateAsSync(ProductInfo productInfo);
         Task DeleteById(int id);

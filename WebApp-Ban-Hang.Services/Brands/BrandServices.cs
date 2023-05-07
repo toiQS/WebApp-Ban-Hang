@@ -3,7 +3,7 @@ using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.Brands
 {
-    public class BrandServices
+    public class BrandServices :IBrandServices
     {
         private ApplicationDbContext _context;
         public BrandServices(ApplicationDbContext context)

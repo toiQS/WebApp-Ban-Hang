@@ -3,7 +3,7 @@ using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.Categorys
 {
-    public class CategoryServices
+    public class CategoryServices : ICategoryServices
     {
         private ApplicationDbContext _context;
         public CategoryServices(ApplicationDbContext context)

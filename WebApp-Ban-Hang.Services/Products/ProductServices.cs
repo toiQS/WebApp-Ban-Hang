@@ -3,7 +3,7 @@ using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.Products
 {
-    public class ProductServices
+    public class ProductServices : IProductServices
     {
         private ApplicationDbContext _context;
         public ProductServices(ApplicationDbContext context)
@@ -19,12 +19,12 @@ namespace WebApp_Ban_Hang.Services.Products
             _context.Add(product);
             await _context.SaveChangesAsync();
         }
-        public async Task DeleteAsSync(string id)
+        public async Task DeleteById(string id)
         {
             _context.Remove(id);
             await _context.SaveChangesAsync();
         }
-        public Product FindByid(string id)
+        public Product FindById(string id)
         {
             return _context.Product.Where(x => x.Product_Line == id).FirstOrDefault();
         }
@@ -33,9 +33,9 @@ namespace WebApp_Ban_Hang.Services.Products
             _context.Update(product);
             await _context.SaveChangesAsync();
         }
-        public async Task UpdateByid(string id)
+        public async Task UpdateById(string id)
         {
-            var product = FindByid(id);
+            var product = FindById(id);
             _context.Update(product);
             await _context.SaveChangesAsync();
         }
