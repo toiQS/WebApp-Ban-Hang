@@ -9,7 +9,7 @@ using WebApp_Ban_Hang.Entity;
 
 namespace WebApp_Ban_Hang.Services.Users
 {
-    internal interface IUserServices
+    public interface IUserServices
     {
         IEnumerable<User> ViewAll();
         User FindById(int id);

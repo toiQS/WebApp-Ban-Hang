@@ -8,6 +8,7 @@ using WebApp_Ban_Hang.Services.ProductImages;
 using WebApp_Ban_Hang.Services.ProductInfos;
 using WebApp_Ban_Hang.Services.Products;
 using WebApp_Ban_Hang.Services.ProductWarrantys;
+using WebApp_Ban_Hang.Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,12 +24,12 @@ builder.Services.AddControllersWithViews();
 // Add Services
 builder.Services.AddScoped<IBrandServices, BrandServices>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
-//builder.Services.AddScoped<IOrderServices,OrderServices>(); //errors
+builder.Services.AddScoped<IOrderServices,OrderServices>();
 builder.Services.AddScoped<IProductImageServices, ProductImageServices>();
 builder.Services.AddScoped<IProductInfoServices, ProductInfoServices>();
 builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<IProductWarrantyServices, ProductWarrantyServices>();
-//builder.Services.AddScoped<> //errors
+builder.Services.AddScoped<IUserServices, UserServices>();
 
 var app = builder.Build();
 
