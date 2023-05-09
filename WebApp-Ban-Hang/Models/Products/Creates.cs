@@ -18,7 +18,7 @@ namespace WebApp_Ban_Hang.Models.Products
         public DateTime Create_At { get; set; } = DateTime.Now;
         public DateTime Modified_At { get; set; } = DateTime.Now;
         public DateTime Delete_At { get; set; } = DateTime.Now;
-        public string Create_By { get; set; }
+        //public string Create_By { get; set; }
         public string BrandId { get; set; }
         public int CategoryID { get; set; }
     }

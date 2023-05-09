@@ -22,31 +22,6 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WebApp_Ban_Hang.Entity.Account", b =>
-                {
-                    b.Property<string>("UserName")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<DateTime>("Create_At")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Delete_At")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Modifiled_At")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("UserName");
-
-                    b.ToTable("Account");
-                });
-
             modelBuilder.Entity("WebApp_Ban_Hang.Entity.Brand", b =>
                 {
                     b.Property<string>("BrandId")
@@ -82,14 +57,45 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("WebApp_Ban_Hang.Entity.Order", b =>
+                {
+                    b.Property<int>("IdOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdOrder"));
+
+                    b.Property<string>("IdProduct")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdUser")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Product_Line")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TextNote")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Total")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("IdOrder");
+
+                    b.HasIndex("IdUser");
+
+                    b.HasIndex("Product_Line");
+
+                    b.ToTable("Order");
+                });
+
             modelBuilder.Entity("WebApp_Ban_Hang.Entity.Product", b =>
                 {
                     b.Property<string>("Product_Line")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("AccountUserName")
-                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("BrandId")
                         .IsRequired()
@@ -102,11 +108,6 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
 
                     b.Property<DateTime>("Create_At")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Create_By")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("Delete_At")
                         .HasColumnType("datetime2");
@@ -133,8 +134,6 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Product_Line");
-
-                    b.HasIndex("AccountUserName");
 
                     b.HasIndex("BrandId");
 
@@ -218,99 +217,71 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                     b.ToTable("ProductWarranty");
                 });
 
-            modelBuilder.Entity("WebApp_Ban_Hang.Entity.UserDetail", b =>
+            modelBuilder.Entity("WebApp_Ban_Hang.Entity.User", b =>
                 {
-                    b.Property<int>("UserDetailId")
+                    b.Property<int>("IdUser")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(11)
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserDetailId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUser"));
 
-                    b.Property<string>("CityOrProvince")
+                    b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DetaledAddress")
+                    b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("District")
+                    b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MiddleName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.HasKey("IdUser");
 
-                    b.Property<string>("WardOrVillage")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("UserDetailId");
-
-                    b.HasIndex("UserName");
-
-                    b.ToTable("UserDetail");
+                    b.ToTable("User");
                 });
 
-            modelBuilder.Entity("WebApp_Ban_Hang.Entity.UserOrder", b =>
+            modelBuilder.Entity("WebApp_Ban_Hang.Entity.Order", b =>
                 {
-                    b.Property<int>("OrderID")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(11)
-                        .HasColumnType("int");
+                    b.HasOne("WebApp_Ban_Hang.Entity.User", "Users")
+                        .WithMany()
+                        .HasForeignKey("IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
+                    b.HasOne("WebApp_Ban_Hang.Entity.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("Product_Line");
 
-                    b.Property<string>("AccountUserName")
-                        .HasColumnType("nvarchar(20)");
+                    b.Navigation("Product");
 
-                    b.Property<string>("Comfirmed_by")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<DateTime>("Create_At")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<long>("Total")
-                        .HasMaxLength(10)
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("OrderID");
-
-                    b.HasIndex("AccountUserName");
-
-                    b.ToTable("UserOrder");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("WebApp_Ban_Hang.Entity.Product", b =>
                 {
-                    b.HasOne("WebApp_Ban_Hang.Entity.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountUserName");
-
                     b.HasOne("WebApp_Ban_Hang.Entity.Brand", "Brand")
                         .WithMany()
                         .HasForeignKey("BrandId")
@@ -322,8 +293,6 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Account");
 
                     b.Navigation("Brand");
 
@@ -361,26 +330,6 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("WebApp_Ban_Hang.Entity.UserDetail", b =>
-                {
-                    b.HasOne("WebApp_Ban_Hang.Entity.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("UserName")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
-            modelBuilder.Entity("WebApp_Ban_Hang.Entity.UserOrder", b =>
-                {
-                    b.HasOne("WebApp_Ban_Hang.Entity.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountUserName");
-
-                    b.Navigation("Account");
                 });
 #pragma warning restore 612, 618
         }

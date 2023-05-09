@@ -18,9 +18,9 @@ namespace WebApp_Ban_Hang.Entity
         public DateTime Create_At { get; set; }
         public DateTime Modified_At { get; set; }
         public DateTime Delete_At { get; set; }
-        [ForeignKey("Product.Account"),Required, MaxLength(20)]
-        public string Create_By { get; set; }
-        public Account? Account { get; set; }
+        //[ForeignKey("Product.User"), Required, MaxLength(20)]
+        //public string Create_By { get; set; }
+        //public User? User { get; set; }
         [ForeignKey("Brand"),Required, MaxLength(10)]
         public string BrandId { get; set; }
         public Brand? Brand { get; set; }

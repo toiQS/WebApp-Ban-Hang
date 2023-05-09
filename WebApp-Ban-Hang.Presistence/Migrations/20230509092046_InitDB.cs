@@ -12,21 +12,6 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Account",
-                columns: table => new
-                {
-                    UserName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Create_At = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Modifiled_At = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Delete_At = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Account", x => x.UserName);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Brand",
                 columns: table => new
                 {
@@ -52,50 +37,23 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserDetail",
+                name: "User",
                 columns: table => new
                 {
-                    UserDetailId = table.Column<int>(type: "int", maxLength: 11, nullable: false)
+                    IdUser = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    DetaledAddress = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    WardOrVillage = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    District = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CityOrProvince = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserDetail", x => x.UserDetailId);
-                    table.ForeignKey(
-                        name: "FK_UserDetail_Account_UserName",
-                        column: x => x.UserName,
-                        principalTable: "Account",
-                        principalColumn: "UserName",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserOrder",
-                columns: table => new
-                {
-                    OrderID = table.Column<int>(type: "int", maxLength: 11, nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Create_At = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Total = table.Column<long>(type: "bigint", maxLength: 10, nullable: false),
-                    Comfirmed_by = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    AccountUserName = table.Column<string>(type: "nvarchar(20)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserOrder", x => x.OrderID);
-                    table.ForeignKey(
-                        name: "FK_UserOrder_Account_AccountUserName",
-                        column: x => x.AccountUserName,
-                        principalTable: "Account",
-                        principalColumn: "UserName");
+                    table.PrimaryKey("PK_User", x => x.IdUser);
                 });
 
             migrationBuilder.CreateTable(
@@ -110,19 +68,12 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                     Create_At = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Modified_At = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Delete_At = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Create_By = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    AccountUserName = table.Column<string>(type: "nvarchar(20)", nullable: true),
                     BrandId = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     CategoryID = table.Column<int>(type: "int", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Product", x => x.Product_Line);
-                    table.ForeignKey(
-                        name: "FK_Product_Account_AccountUserName",
-                        column: x => x.AccountUserName,
-                        principalTable: "Account",
-                        principalColumn: "UserName");
                     table.ForeignKey(
                         name: "FK_Product_Brand_BrandId",
                         column: x => x.BrandId,
@@ -134,6 +85,34 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                         column: x => x.CategoryID,
                         principalTable: "Category",
                         principalColumn: "CategoryID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Order",
+                columns: table => new
+                {
+                    IdOrder = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdUser = table.Column<int>(type: "int", nullable: false),
+                    IdProduct = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Product_Line = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    TextNote = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Total = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Order", x => x.IdOrder);
+                    table.ForeignKey(
+                        name: "FK_Order_Product_Product_Line",
+                        column: x => x.Product_Line,
+                        principalTable: "Product",
+                        principalColumn: "Product_Line");
+                    table.ForeignKey(
+                        name: "FK_Order_User_IdUser",
+                        column: x => x.IdUser,
+                        principalTable: "User",
+                        principalColumn: "IdUser",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -198,9 +177,14 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_AccountUserName",
-                table: "Product",
-                column: "AccountUserName");
+                name: "IX_Order_IdUser",
+                table: "Order",
+                column: "IdUser");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Order_Product_Line",
+                table: "Order",
+                column: "Product_Line");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Product_BrandId",
@@ -226,21 +210,14 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 name: "IX_ProductWarranty_Product_Line",
                 table: "ProductWarranty",
                 column: "Product_Line");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserDetail_UserName",
-                table: "UserDetail",
-                column: "UserName");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserOrder_AccountUserName",
-                table: "UserOrder",
-                column: "AccountUserName");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Order");
+
             migrationBuilder.DropTable(
                 name: "ProductImage");
 
@@ -251,16 +228,10 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 name: "ProductWarranty");
 
             migrationBuilder.DropTable(
-                name: "UserDetail");
-
-            migrationBuilder.DropTable(
-                name: "UserOrder");
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "Product");
-
-            migrationBuilder.DropTable(
-                name: "Account");
 
             migrationBuilder.DropTable(
                 name: "Brand");

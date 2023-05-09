@@ -49,7 +49,6 @@ namespace WebApp_Ban_Hang.Controllers
                     Create_At = model.Create_At,
                     Modified_At = model.Modified_At,
                     Delete_At = model.Delete_At,
-                    Create_By = model.Create_By,
                     BrandId = model.BrandId,
                     CategoryID = model.CategoryID,
                 };
@@ -74,7 +73,6 @@ namespace WebApp_Ban_Hang.Controllers
                 Create_At = product.Create_At,
                 Modified_At = product.Modified_At,
                 Delete_At = product.Delete_At,
-                Create_By = product.Create_By,
                 BrandId = product.BrandId,
                 CategoryID = product.CategoryID,
             };
@@ -98,7 +96,6 @@ namespace WebApp_Ban_Hang.Controllers
                 Create_At = product.Create_At,
                 Modified_At = product.Modified_At,
                 Delete_At = product.Delete_At,
-                Create_By = product.Create_By,
                 BrandId = product.BrandId,
                 CategoryID = product.CategoryID,
             };
@@ -142,7 +139,6 @@ namespace WebApp_Ban_Hang.Controllers
                 Create_At = product.Create_At,
                 Modified_At = product.Modified_At,
                 Delete_At = product.Delete_At,
-                Create_By = product.Create_By,
             };
             return View(model);
         }
