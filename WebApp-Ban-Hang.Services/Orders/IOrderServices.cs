@@ -11,9 +11,10 @@ namespace WebApp_Ban_Hang.Services.Orders
     {
         IEnumerable<Order> ViewAll();
         Order FindById(int id);
-        Task CreataAsSync(User user);
+        
         Task DeleteAsSync(int id);
-        Task UpdateAsSync(User user);
+        Task UpdateAsSync(Order order);
         Task UpdateById(int id);
+        Task CreateAsSync(Order order);
     }
 }

@@ -3,7 +3,7 @@ using WebApp_Ban_Hang.Presistence;
 
 namespace WebApp_Ban_Hang.Services.Orders
 {
-    public class OrderServices
+    public class OrderServices : IOrderServices
     {
         private ApplicationDbContext _context;
         public OrderServices(ApplicationDbContext context)
@@ -16,7 +16,7 @@ namespace WebApp_Ban_Hang.Services.Orders
         }
         public Order FindById(int id)
         {
-            return _context.Order.Where(x => x.IdUser == id).FirstOrDefault() ?? null;
+            return _context.Order.Where(x => x.IdUser == id).FirstOrDefault();
         }
         public async Task CreateAsSync(Order order)
         {
