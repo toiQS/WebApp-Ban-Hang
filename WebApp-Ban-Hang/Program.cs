@@ -1,6 +1,14 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApp_Ban_Hang.Presistence;
+using WebApp_Ban_Hang.Services.Brands;
+using WebApp_Ban_Hang.Services.Categorys;
+using WebApp_Ban_Hang.Services.Orders;
+using WebApp_Ban_Hang.Services.ProductImages;
+using WebApp_Ban_Hang.Services.ProductInfos;
+using WebApp_Ban_Hang.Services.Products;
+using WebApp_Ban_Hang.Services.ProductWarrantys;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,9 +20,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+// Add Services
+builder.Services.AddScoped<IBrandServices, BrandServices>();
+builder.Services.AddScoped<ICategoryServices, CategoryServices>();
+//builder.Services.AddScoped<IOrderServices,OrderServices>(); //errors
+builder.Services.AddScoped<IProductImageServices, ProductImageServices>();
+builder.Services.AddScoped<IProductInfoServices, ProductInfoServices>();
+builder.Services.AddScoped<IProductServices, ProductServices>();
+builder.Services.AddScoped<IProductWarrantyServices, ProductWarrantyServices>();
+//builder.Services.AddScoped<> //errors
 
 var app = builder.Build();
-// Add Services
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
