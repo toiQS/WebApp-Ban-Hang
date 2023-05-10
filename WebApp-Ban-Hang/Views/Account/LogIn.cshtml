@@ -1,0 +1,122 @@
+﻿@model WebApp_Ban_Hang.Models.User.LoginUser
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>SINGED-SHOP</title>
+</head>
+
+<body>
+
+    <div id="main-head">
+        <div id="header">
+            <img id="img_web" src="../img//singed.png">
+            <ul id="navigation">
+                <li> <a href="index.html">TRANG CHỦ</a></li>
+                <li>
+                    <a>PHONG CÁCH</a> <a class="ti-angle-down" id="css_ti_angle_down"></a>
+                    <ul class="style">
+                        <li> <a>Đơn giản</a></li>
+                        <li> <a>Lịch sự</a></li>
+                        <li> <a>Trưởng thành</a></li>
+                        <li> <a>Trẻ trung</a></li>
+                        <li> <a>Năng động</a></li>
+                    </ul>
+                </li>
+                <li> <a href="sale.html">KHUYẾN MÃI</a></li>
+                <li> <a>LIÊN HỆ</a></li>
+            </ul>
+            <div id="div_function">
+                <input id="search_box" placeholder="Tìm kiếm ..">
+                <div i="div_iconfunction">
+                    <i class="fa-solid fa-magnifying-glass icon_funtion"></i>
+                    <i class="fa-solid fa-user icon_funtion profile">
+                        <ul class="profile_container">
+                            <li><a>Thông tin</a></li>
+                            <li><a>Đơn hàng của tôi</a></li>
+                            <li><a>Giỏ hàng</a></li>
+                            <li><a>Đăng xuất</a></li>
+                        </ul>
+                    </i>
+                    <i class="fa-solid fa-cart-shopping icon_funtion"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="background_regis">
+            <div id="login">
+                <h2 id="title_login">Đăng nhập</h2>
+                <h3 id="name_shop">Singed/Shop</h3>
+                <input id="phone_number" type="text" placeholder="Số điện thoại">
+                <input id="passwd" type="password" placeholder="Mật khẩu">
+                <button id="btn_login">Đăng nhập</button>
+                <div id="login_google">
+                    <a id="or">hoặc</a>
+                    <img id="img_google" src="../img/google.png">
+                </div>
+                <div id="reques_register">
+                    Chưa có tài khoản? <a href="register.html" id="text_register">Đăng ký</a>
+                </div>
+                <a id="forgot_passwd" href="fogot_passwd.html">Quên mật khẩu</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="footer">
+        <h1 id="title_contact">Liên hệ</h1>
+        <div id="div_iconcontact">
+            <div id="icon_fb"></div>
+            <div id="icon_email"></div>
+            <div id="icon_phone"></div>
+        </div>
+
+        <div id="content_footer">
+            <div id="div_singed">
+                <h3>Singed-Shop</h3>
+                <div id="img_singed"></div>
+            </div>
+            <div id="explore">
+                <ul id="explore_title">
+                    <h4>Khám phá</h4>
+                    <li><a>Trang chủ</a></li>
+                    <li><a>Giới thiệu</a></li>
+                    <li><a>Sản phẩm mới</a></li>
+                    <li><a>Giảm giá</a></li>
+                </ul>
+            </div>
+            <div id="policy">
+                <ul id="policy_title">
+                    <h4>Chính sách</h4>
+                    <li><a>Mua hàng</a></li>
+                    <li><a>Vận chuyển-giao hàng</a></li>
+                    <li><a>Đổi trả</a></li>
+                </ul>
+            </div>
+            <div id="support">
+                <ul id="support_title">
+                    <h4>Hỗ trợ</h4>
+                    <li><a>Câu hỏi thường gặp</a></li>
+                    <li><a>Thanh toán</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="end_footer">
+            <h3 class="title_endfooter">P/s : Website được lập bởi 1 nhóm nhỏ sinh viên  Đại học Sài Gòn</h3>
+            <h3 class="title_endfooter endfooter2">* Website được hoàn thiện ngày : 27/2/2023</h3>
+            <h3 id="title_address">Địa chỉ : Trụ sở chính/ 273 An Dương Vương – Phường 3 – Quận 5</h3>
+        </div>
+    </div>
+
+    <script src="../JavaScript/test.js"></script>
+</body>
+</html>
