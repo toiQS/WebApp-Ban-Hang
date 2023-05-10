@@ -9,9 +9,11 @@ namespace WebApp_Ban_Hang.Controllers
     public class OrderController : Controller
     {
         private IOrderServices _service;
+        private IProductServices _productServices;
         private IWebHostEnvironment _webHostEnvironment;
-        public OrderController(IOrderServices service, IWebHostEnvironment webHostEnvironment)
+        public OrderController(IOrderServices service, IWebHostEnvironment webHostEnvironment, IProductServices productServices)
         {
+            _productServices = productServices;
             _service = service;
             _webHostEnvironment = webHostEnvironment;
         }
@@ -37,6 +39,7 @@ namespace WebApp_Ban_Hang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Creates model)
         {
+            uint total = (uint)_productServices.FindById(model.IdProduct).Price;
             if (ModelState.IsValid) {
                 var order = new Order
                 {
@@ -44,7 +47,7 @@ namespace WebApp_Ban_Hang.Controllers
                     IdProduct = model.IdProduct,
                     IdUser = model.IdUser,
                     TextNote = model.TextNote,
-                    Total = model.Total
+                    Total = total-(total*_productServices.FindById(model.IdProduct).Discount /100)
                 };
             }
             return View();
@@ -88,6 +91,7 @@ namespace WebApp_Ban_Hang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Edits model)
         {
+            uint total = (uint)_productServices.FindById(model.IdProduct).Price;
             var order = _service.FindById(model.IdOrder);
             if (order == null)
             {
@@ -97,7 +101,7 @@ namespace WebApp_Ban_Hang.Controllers
             order.IdProduct = model.IdProduct;
             order.IdUser = model.IdUser;
             order.TextNote = model.TextNote;
-            order.Total = model.Total;
+            order.Total = total - (total * _productServices.FindById(model.IdProduct).Discount / 100);
             return View();
         }
         [HttpGet]
