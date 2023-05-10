@@ -55,7 +55,7 @@ namespace WebApp_Ban_Hang.Presistence
                     NormalizedUserName = "SUPER ADMIN".ToUpper(),
                     Email = "admin@gmail.com",
                     NormalizedEmail = "ADMINGMAIL.COM".ToUpper(),
-                    PasswordHash = hasher.HashPassword(null,"Admin@123")
+                    PasswordHash = hasher.HashPassword(null, "Admin@123")
                 });
             builder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string>
