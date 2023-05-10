@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Reflection.Metadata.Ecma335;
 
 namespace WebApp_Ban_Hang.Models.User
 {
-    public class Creates
+    public class Edits
     {
         [Key]
         public int IdUser { get; set; }
         [Required, MaxLength(50)]
         public string FirstName { get; set; }
-        public string? MiddleName { get;set; }
+        public string? MiddleName { get; set; }
         [Required]
         [MaxLength(50)]
         public string LastName { get; set; }
@@ -17,7 +16,7 @@ namespace WebApp_Ban_Hang.Models.User
         {
             get
             {
-                return FirstName + (string.IsNullOrEmpty(MiddleName) ? " " : (" " + MiddleName + " "))+LastName;
+                return FirstName + (string.IsNullOrEmpty(MiddleName) ? " " : (" " + MiddleName + " ")) + LastName;
             }
         }
         public string Phone { get; set; }

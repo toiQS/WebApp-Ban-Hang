@@ -1,4 +1,7 @@
-﻿namespace WebApp_Ban_Hang.Models.User
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace WebApp_Ban_Hang.Models.User
 {
     public class CreateUser
     {

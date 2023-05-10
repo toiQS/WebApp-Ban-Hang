@@ -1,6 +1,6 @@
 ﻿namespace WebApp_Ban_Hang.Models.User
 {
-    public class Index
+    public class Indexs
     {
         public string FirstName { get; set; }
         public string? MiddleName { get; set; }
