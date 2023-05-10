@@ -130,5 +130,36 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        {
+            ViewData["ImageIDSortParm"] = sortOrder == "ImageID" ? "ImageID_desc" : "ImageID";
+            ViewData["ProductLineSortParm"] = sortOrder == "ProductLine" ? "ProductLine_desc" : "ProductLine";
+            ViewData["CurrentFilter"] = searchString;
+            var productImages = imageServices.ViewAll();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                productImages = productImages.Where(s => s.ImageID.ToString().Contains(searchString)
+                                       || s.ProductLine.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "ImageID":
+                    productImages = productImages.OrderBy(s => s.ImageID);
+                    break;
+                case "ImageID_desc":
+                    productImages = productImages.OrderByDescending(s => s.ImageID);
+                    break;
+                case "ProductLine":
+                    productImages = productImages.OrderBy(s => s.ProductLine);
+                    break;
+                case "ProductLine_desc":
+                    productImages = productImages.OrderByDescending(s => s.ProductLine);
+                    break;
+                default:
+                    productImages = productImages.OrderBy(s => s.ImageID);
+                    break;
+            }
+            return View(productImages);
+        }
     }
 }

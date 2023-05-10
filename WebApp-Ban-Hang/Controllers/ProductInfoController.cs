@@ -108,5 +108,36 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        {
+            ViewData["Info_IDSortParm"] = sortOrder == "Info_ID" ? "Info_ID_desc" : "Info_ID";
+            ViewData["Product_LineParm"] = sortOrder == "Product_Line" ? "Product_Line_desc" : "Product_Line";
+            ViewData["CurrentFilter"] = searchString;
+            var productInfos = _services.ViewAll();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                productInfos = productInfos.Where(s => s.Product_Line.Contains(searchString)
+                                       || s.Info_ID.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Product_Line":
+                    productInfos = productInfos.OrderBy(s => s.Product_Line);
+                    break;
+                case "Product_Line_desc":
+                    productInfos = productInfos.OrderByDescending(s => s.Product_Line);
+                    break;
+                case "Info_ID":
+                    productInfos = productInfos.OrderBy(s => s.Info_ID);
+                    break;
+                case "Info_ID_desc":
+                    productInfos = productInfos.OrderByDescending(s => s.Info_ID);
+                    break;
+                default:
+                    productInfos = productInfos.OrderBy(s => s.Info_ID);
+                    break;
+            }
+            return View(productInfos);
+        }
     }
 }

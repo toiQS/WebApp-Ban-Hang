@@ -102,5 +102,36 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        {
+            ViewData["CategoryNameSortParm"] = sortOrder == "CategoryName" ? "CategoryName" : "CategoryName_desc";
+            ViewData["CategoryIdSortParm"] = sortOrder == "CategoryId" ? "CategoryId" : "CategoryId_desc";
+            ViewData["CurrentFilter"] = searchString;
+            var Category = _services.ViewAll();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Category = Category.Where(s => s.CategoryName.Contains(searchString)
+                                       || s.CategoryID.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "CategoryName":
+                    Category = Category.OrderBy(s => s.CategoryName);
+                    break;
+                case "CategoryName_desc":
+                    Category = Category.OrderByDescending(s => s.CategoryName);
+                    break;
+                case "CategoryId":
+                    Category = Category.OrderBy(s => s.CategoryID);
+                    break;
+                case "CategoryId_desc":
+                    Category = Category.OrderByDescending(s => s.CategoryID);
+                    break;
+                default:
+                    Category = Category.OrderBy(s => s.CategoryName);
+                    break;
+            }
+            return View(Category);
+        }
     }
 }

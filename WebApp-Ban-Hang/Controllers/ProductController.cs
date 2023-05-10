@@ -152,5 +152,71 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        {
+            ViewData["ProductNameSortParm"] = sortOrder == "ProductName" ? "ProductName_desc" : "ProductName";
+            ViewData["ProductLineSortParm"] = sortOrder == "ProductLine" ? "ProductLine_desc" : "ProductLine";
+            ViewData["PriceSortParm"] = sortOrder == "Price" ? "Price_desc" : "Price";
+            ViewData["DiscountSortParm"] = sortOrder == "Discount" ? "Discount_desc" : "Discount";
+            ViewData["Create_AtSortParm"] = sortOrder == "Create_At" ? "Create_At_desc" : "Create_At";
+            ViewData["Modified_AtSortParm"] = sortOrder == "Modified_At" ? "Modified_At_desc" : "Modified_At";
+            ViewData["Delete_AtSortParm"] = sortOrder == "Delete_At" ? "Delete_At_desc" : "Delete_At";
+            ViewData["CurrentFilter"] = searchString;
+            var Product = productServices.ViewAll();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Product = Product.Where(s => s.Product_Name.Contains(searchString)
+                                       || s.Product_Line.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Create_At":
+                    Product = Product.OrderBy(s => s.Create_At);
+                    break;
+                case "Create_At_desc":
+                    Product = Product.OrderByDescending(s => s.Create_At);
+                    break;
+                case "Modified_At":
+                    Product = Product.OrderBy(s => s.Modified_At);
+                    break;
+                case "Modified_At_desc":
+                    Product = Product.OrderByDescending(s => s.Modified_At);
+                    break;
+                case "Delete_At":
+                    Product = Product.OrderBy(s => s.Delete_At);
+                    break;
+                case "Delete_At_desc":
+                    Product = Product.OrderByDescending(s => s.Delete_At);
+                    break;
+                case "Discount":
+                    Product = Product.OrderBy(s => s.Discount);
+                    break;
+                case "Discount_desc":
+                    Product = Product.OrderByDescending(s => s.Discount);
+                    break;
+                case "Price":
+                    Product = Product.OrderBy(s => s.Price);
+                    break;
+                case "Price_desc":
+                    Product = Product.OrderByDescending(s => s.Price);
+                    break;
+                case "ProductName":
+                    Product = Product.OrderBy(s => s.Product_Name);
+                    break;
+                case "ProductName_desc":
+                    Product = Product.OrderByDescending(s => s.Product_Name);
+                    break;
+                case "ProductLine":
+                    Product = Product.OrderBy(s => s.Product_Line);
+                    break;
+                case "ProductLine_desc":
+                    Product = Product.OrderByDescending(s => s.Product_Line);
+                    break;
+                default:
+                    Product = Product.OrderBy(s => s.Product_Line);
+                    break;
+            }
+            return View(Product);
+        }
     }
 }

@@ -122,5 +122,50 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        {
+            ViewData["Product_IDSortParm"] = sortOrder == "Product_ID" ? "Product_ID_desc" : "Product_ID";
+            ViewData["Purchased_AtSortParm"] = sortOrder == "Purchased_At" ? "Purchased_At_desc" : "Purchased_At";
+            ViewData["Warranty_PeriodSortParm"] = sortOrder == "Warranty_Period" ? "Warranty_Period_desc" : "Warranty_Period";
+            ViewData["Product_LineSortParm"] = sortOrder == "Product_Line" ? "Product_Line_desc" : "Product_Line";
+            ViewData["CurrentFilter"] = searchString;
+            var productWarranty = _services.ViewAll();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                productWarranty = productWarranty.Where(s => s.Product_ID.Contains(searchString)
+                                       || s.Product_Line.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Product_Line":
+                    productWarranty = productWarranty.OrderBy(s => s.Product_Line);
+                    break;
+                case "Product_Line_desc":
+                    productWarranty = productWarranty.OrderByDescending(s => s.Product_Line);
+                    break;
+                case "Warranty_Period":
+                    productWarranty = productWarranty.OrderBy(s => s.Warranty_Period);
+                    break;
+                case "Warranty_Period_desc":
+                    productWarranty = productWarranty.OrderByDescending(s => s.Warranty_Period);
+                    break;
+                case "Product_ID":
+                    productWarranty = productWarranty.OrderBy(s => s.Product_ID);
+                    break;
+                case "Product_ID_desc":
+                    productWarranty = productWarranty.OrderByDescending(s => s.Product_ID);
+                    break;
+                case "Purchased_At":
+                    productWarranty = productWarranty.OrderBy(s => s.Purchased_At);
+                    break;
+                case "Purchased_At_desc":
+                    productWarranty = productWarranty.OrderByDescending(s => s.Purchased_At);
+                    break;
+                default:
+                    productWarranty = productWarranty.OrderBy(s => s.Product_ID);
+                    break;
+            }
+            return View(productWarranty);
+        }
     }
 }
