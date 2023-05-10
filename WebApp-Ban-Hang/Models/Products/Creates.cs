@@ -8,7 +8,6 @@ namespace WebApp_Ban_Hang.Models.Products
         [Display(Name = "Dòng Sản Phẩm")]
         public string Product_Line { get; set; }
         [Required, MaxLength(150)]
-        [RegularExpression(@"^[A-Z][a-zA-Z""'\s-]*$"), Display(Name = "Last Name")]
         [Display(Name = "Tên Sản Phẩm")]
         public string Product_Name { get; set; }
         [Required, MaxLength(50)]
