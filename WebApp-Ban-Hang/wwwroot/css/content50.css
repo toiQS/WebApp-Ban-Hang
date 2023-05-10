@@ -1,0 +1,133 @@
+#content_50{
+    position: relative;
+    background: rgba(0, 0, 0, 0.86);
+    height: 1200px;
+    text-align: center;
+    margin-top: 94px;
+  }
+  
+  #background_slider{
+    position: relative;
+    width: 100%;
+    height: 950px;
+    background-image: url(../img/nen.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  } 
+
+  #slider{
+    position: absolute;
+    width: 450px;
+    height: 600px;
+    background-image: url(../img/img_sale.jfif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 50px;
+    left: 930px;
+    border-radius: 2px;
+    border-color:  #FFFFFF;
+    border: 1px 1px 0px 1px;
+    box-shadow: 10px #000000;
+  }
+
+  .title_content{
+    color: #FFFAFA;
+    font-family: Roboto;
+  }
+
+  #title_shop{
+    font-size: 40px;
+    position: absolute;
+    top: 120px;
+    left: 330px;
+    background-color: #4DB20F;
+    padding: 10px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  #slogan{
+    font-size: 25px;
+    position: absolute;
+    top: 220px;
+    left: 340px;
+    font-weight: 400;
+  }
+
+  #div_sub_slogan{
+    font-size: 20px;
+    position: absolute;
+    top: 270px;
+    left: 260px;
+    display: flex;
+  }
+
+  .sub_slogan{
+    color: rgba(255, 255, 255, 0.70);
+    font-weight: 400;
+  }
+
+  #icon_clothes{
+    color: white;
+    margin-right: 10px;
+  }
+
+  .icon_down{
+    font-size: 70px;
+    position: absolute;
+    top : 400px;
+    left: 400px;
+    color: whitesmoke;
+  }
+
+  #list_slider{
+    position: absolute;
+    width: 100%;
+    top: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #list_slider > div:hover {
+    background-size: cover;
+    width: 300px;
+    height: 400px;
+  }
+
+  #slider_child1{
+    background-image: url(../img/slider1.jfif);
+    width: 170px;
+    height: 250px;
+  }
+  #slider_child2{
+    background-image: url(../img/slider2.jfif);
+    width: 220px;
+    height: 300px;
+  }
+  #slider_child_mid{
+    background-image: url(../img/img_sale.jfif);
+    width: 270px;
+    height: 350px;
+  }
+  #slider_child4{
+    background-image: url(../img/slider3.jfif);
+    width: 220px;
+    height: 300px;
+  }
+  #slider_child5{
+    background-image: url(../img/slider4.jfif);
+    width: 170px;
+    height: 250px;
+  }
+
+  
+  #list_slider > div{ 
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    margin: 0 30px 0 30px;
+    transition: all .1s  cubic-bezier(0.2, 0.1, 0.1, 0.1);
+  }
+   
+
