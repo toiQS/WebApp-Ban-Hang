@@ -31,6 +31,9 @@ builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<IProductWarrantyServices, ProductWarrantyServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 
+//setting configure application cookie
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
