@@ -3,6 +3,7 @@ using WebApp_Ban_Hang.Services.Users;
 using WebApp_Ban_Hang.Models.User;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
+using WebApp_Ban_Hang.Entity;
 
 namespace WebApp_Ban_Hang.Controllers
 {
@@ -126,6 +127,62 @@ namespace WebApp_Ban_Hang.Controllers
                 return RedirectToAction("Index");
             }
             return View(model);
+        }
+        public async Task<IActionResult> Sort(string sortOrder, string currentFilter, string searchString, int? pageNumber)
+        {
+            ViewData["IdUserSortParm"] = sortOrder == "IdUser" ? "IdUser_desc" : "IdUser";
+            ViewData["FirstNameSortParm"] = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
+            ViewData["MiddleNameSortParm"] = sortOrder == "MiddleName" ? "MiddleName_desc" : "MiddleName";
+            ViewData["LastNameSortParm"] = sortOrder == "LastName" ? "LastName_desc" : "LastName";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+            var user = _services.ViewAll();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                user = user.Where(s => s.IdUser.ToString().Contains(searchString)
+                                       || s.FullName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "LastName":
+                    user = user.OrderBy(s => s.LastName);
+                    break;
+                case "LastName_desc":
+                    user = user.OrderByDescending(s => s.LastName);
+                    break;
+                case "MiddleName":
+                    user = user.OrderBy(s => s.MiddleName);
+                    break;
+                case "MiddleName_desc":
+                    user = user.OrderByDescending(s => s.MiddleName);
+                    break;
+                case "IdUser":
+                    user = user.OrderBy(s => s.IdUser);
+                    break;
+                case "IdUser_desc":
+                    user = user.OrderByDescending(s => s.IdUser);
+                    break;
+                case "FirstName":
+                    user = user.OrderBy(s => s.FirstName);
+                    break;
+                case "FirstName_desc":
+                    user = user.OrderByDescending(s => s.FirstName);
+                    break;
+                default:
+                    user = user.OrderBy(s => s.IdUser);
+                    break;
+            }
+            int pageSize = 5;
+            return View(await PaginatedList<ProductWarranty>.CreateAsync((IQueryable<ProductWarranty>)user, pageNumber ?? 1, pageSize));
         }
     }
 }

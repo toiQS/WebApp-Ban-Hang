@@ -124,50 +124,61 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        public async Task<IActionResult> Sort(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["IdOrderSortParm"] = sortOrder == "IdOrder" ? "IdOrder_desc" : "IdOrder";
             ViewData["IdProductSortParm"] = sortOrder == "IdProduct" ? "ProductLine_desc" : "IdProduct";
             ViewData["IdUserSortParm"] = sortOrder == "IdUser" ? "IdUser_desc" : "IdUser";
             ViewData["TotalSortParm"] = sortOrder == "Total" ? "Total_desc" : "Total";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             ViewData["CurrentFilter"] = searchString;
-            var Product = _service.ViewAll();
+            var order = _service.ViewAll();
             if (!String.IsNullOrEmpty(searchString))
             {
-                Product = Product.Where(s => s.IdOrder.ToString().Contains(searchString)
+                order = order.Where(s => s.IdOrder.ToString().Contains(searchString)
                                        || s.IdProduct.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "Total":
-                    Product = Product.OrderBy(s => s.Total);
+                    order = order.OrderBy(s => s.Total);
                     break;
                 case "Total_desc":
-                    Product = Product.OrderByDescending(s => s.Total);
+                    order = order.OrderByDescending(s => s.Total);
                     break;
                 case "IdUser":
-                    Product = Product.OrderBy(s => s.IdUser);
+                    order = order.OrderBy(s => s.IdUser);
                     break;
                 case "IdUser_desc":
-                    Product = Product.OrderByDescending(s => s.IdUser);
+                    order = order.OrderByDescending(s => s.IdUser);
                     break;
                 case "IdOrder":
-                    Product = Product.OrderBy(s => s.IdOrder);
+                    order = order.OrderBy(s => s.IdOrder);
                     break;
                 case "IdOrder_desc":
-                    Product = Product.OrderByDescending(s => s.IdOrder);
+                    order = order.OrderByDescending(s => s.IdOrder);
                     break;
                 case "IdProduct":
-                    Product = Product.OrderBy(s => s.IdProduct);
+                    order = order.OrderBy(s => s.IdProduct);
                     break;
                 case "ProductLine_desc":
-                    Product = Product.OrderByDescending(s => s.IdProduct);
+                    order = order.OrderByDescending(s => s.IdProduct);
                     break;
                 default:
-                    Product = Product.OrderBy(s => s.IdOrder);
+                    order = order.OrderBy(s => s.IdOrder);
                     break;
             }
-            return View(Product);
+            int pageSize = 8;
+            return View(await PaginatedList<Order>.CreateAsync((IQueryable<Order>)order, pageNumber ?? 1, pageSize));
         }
     }
 }

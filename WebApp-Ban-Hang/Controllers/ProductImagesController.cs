@@ -128,10 +128,20 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        public async Task<IActionResult> Sort(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["ImageIDSortParm"] = sortOrder == "ImageID" ? "ImageID_desc" : "ImageID";
             ViewData["ProductLineSortParm"] = sortOrder == "ProductLine" ? "ProductLine_desc" : "ProductLine";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             ViewData["CurrentFilter"] = searchString;
             var productImages = imageServices.ViewAll();
             if (!String.IsNullOrEmpty(searchString))
@@ -157,7 +167,8 @@ namespace WebApp_Ban_Hang.Controllers
                     productImages = productImages.OrderBy(s => s.ImageID);
                     break;
             }
-            return View(productImages);
+            int pageSize = 5;
+            return View(await PaginatedList<ProductImage>.CreateAsync((IQueryable<ProductImage>)productImages, pageNumber ?? 1, pageSize));
         }
     }
 }

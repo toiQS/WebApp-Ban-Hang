@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using WebApp_Ban_Hang.Entity;
 using WebApp_Ban_Hang.Models.ProductWarrantys;
 using WebApp_Ban_Hang.Services.ProductWarrantys;
@@ -119,12 +120,22 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        public async Task<IActionResult> Sort(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["Product_IDSortParm"] = sortOrder == "Product_ID" ? "Product_ID_desc" : "Product_ID";
             ViewData["Purchased_AtSortParm"] = sortOrder == "Purchased_At" ? "Purchased_At_desc" : "Purchased_At";
             ViewData["Warranty_PeriodSortParm"] = sortOrder == "Warranty_Period" ? "Warranty_Period_desc" : "Warranty_Period";
             ViewData["Product_LineSortParm"] = sortOrder == "Product_Line" ? "Product_Line_desc" : "Product_Line";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             ViewData["CurrentFilter"] = searchString;
             var productWarranty = _services.ViewAll();
             if (!String.IsNullOrEmpty(searchString))
@@ -162,7 +173,8 @@ namespace WebApp_Ban_Hang.Controllers
                     productWarranty = productWarranty.OrderBy(s => s.Product_ID);
                     break;
             }
-            return View(productWarranty);
+            int pageSize = 8;
+            return View(await PaginatedList<ProductWarranty>.CreateAsync((IQueryable<ProductWarranty>)productWarranty, pageNumber ?? 1, pageSize));
         }
     }
 }

@@ -143,8 +143,9 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        public async Task<IActionResult> Sort(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
             ViewData["ProductNameSortParm"] = sortOrder == "ProductName" ? "ProductName_desc" : "ProductName";
             ViewData["ProductLineSortParm"] = sortOrder == "ProductLine" ? "ProductLine_desc" : "ProductLine";
             ViewData["PriceSortParm"] = sortOrder == "Price" ? "Price_desc" : "Price";
@@ -152,6 +153,16 @@ namespace WebApp_Ban_Hang.Controllers
             ViewData["Create_AtSortParm"] = sortOrder == "Create_At" ? "Create_At_desc" : "Create_At";
             ViewData["Modified_AtSortParm"] = sortOrder == "Modified_At" ? "Modified_At_desc" : "Modified_At";
             ViewData["Delete_AtSortParm"] = sortOrder == "Delete_At" ? "Delete_At_desc" : "Delete_At";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             ViewData["CurrentFilter"] = searchString;
             var Product = productServices.ViewAll();
             if (!String.IsNullOrEmpty(searchString))
@@ -207,7 +218,8 @@ namespace WebApp_Ban_Hang.Controllers
                     Product = Product.OrderBy(s => s.Product_Line);
                     break;
             }
-            return View(Product);
+            int pageSize = 8;
+            return View(await PaginatedList<Product>.CreateAsync((IQueryable<Product>)Product, pageNumber ?? 1, pageSize));
         }
     }
 }
