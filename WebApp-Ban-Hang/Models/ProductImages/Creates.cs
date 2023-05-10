@@ -7,11 +7,22 @@ namespace WebApp_Ban_Hang.Models.ProductImages
     public class Creates
     {
         [Key, Required, MaxLength(11)]
+<<<<<<< Updated upstream
         [Display(Name = "ID Hình Ảnh")]
         public int ImageID { get; set; }
         [Display(Name = "Dòng Sản Phẩm")]
         public string ProductLine { get; set; }
         [Required, MaxLength(50)]
+=======
+
+        [Display(Name = "ID Hình Ảnh")]
+        public int ImageID { get; set; }
+
+        [Display(Name = "Dòng Sản Phẩm")]
+        public string ProductLine { get; set; }
+        [Required, MaxLength(50)]
+
+>>>>>>> Stashed changes
         [Display(Name = "URL Hình Ảnh")]
         public IFormFile ImageURL { get; set; }
     }
