@@ -89,7 +89,7 @@ namespace WebApp_Ban_Hang.Controllers
             var model = new Deletes
             {
                 BrandId = brand.BrandId,
-                BrandName = brand.BrandName,
+                
             };
             return View(model);
         }

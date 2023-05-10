@@ -130,15 +130,6 @@ namespace WebApp_Ban_Hang.Controllers
             var model = new Deletes
             {
                 Product_Line = product.Product_Line,
-                Product_Name = product.Product_Name,
-                Thumbnail = product.Thumbnail,
-                Price = product.Price,
-                Discount = product.Discount,
-                BrandId = product.BrandId,
-                CategoryID = product.CategoryID,
-                Create_At = product.Create_At,
-                Modified_At = product.Modified_At,
-                Delete_At = product.Delete_At,
             };
             return View(model);
         }

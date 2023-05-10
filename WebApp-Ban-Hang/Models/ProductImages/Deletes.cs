@@ -3,7 +3,5 @@
     public class Deletes
     {
         public int ImageID { get; set; }
-        public string ProductLine { get; set; }
-        public string ImageURL { get; set; }
     }
 }

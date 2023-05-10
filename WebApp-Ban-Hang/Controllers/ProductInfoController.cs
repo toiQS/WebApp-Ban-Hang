@@ -92,9 +92,7 @@ namespace WebApp_Ban_Hang.Controllers
                 return NotFound();
             var model = new Deletes
             {
-                Info_ID = info.Info_ID,
-                Product_Line = info.Product_Line,
-                Product_Infomation = info.Product_Infomation
+                Info_ID = info.Info_ID
             };
             return View(model);
         }

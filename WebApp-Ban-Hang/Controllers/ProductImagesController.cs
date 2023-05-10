@@ -115,8 +115,6 @@ namespace WebApp_Ban_Hang.Controllers
             var model = new Deletes
             {
                 ImageID = images.ImageID,
-                ImageURL = images.ImageURL,
-                ProductLine = images.ProductLine,
             };
             return View(model);
         }

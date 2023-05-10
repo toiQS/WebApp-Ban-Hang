@@ -106,9 +106,6 @@ namespace WebApp_Ban_Hang.Controllers
             var model = new Deletes
             {
                 Product_ID = id,
-                Product_Line = warranty.Product_Line,
-                Purchased_At = warranty.Purchased_At,
-                Warranty_Period = warranty.Warranty_Period
             };
             return View(model);
         }

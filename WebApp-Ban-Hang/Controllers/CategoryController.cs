@@ -88,7 +88,6 @@ namespace WebApp_Ban_Hang.Controllers
             var model = new Deletes
             {
                 CategoryID = category.CategoryID,
-                CategoryName = category.CategoryName
             };
             return View(model);
         }

@@ -111,10 +111,6 @@ namespace WebApp_Ban_Hang.Controllers
             var model = new Deletes
             {
                 IdOrder = order.IdOrder,
-                IdProduct = order.IdProduct,
-                IdUser = order.IdUser,
-                TextNote = order.TextNote,
-                Total = order.Total
             };
             return View(model);
         }
