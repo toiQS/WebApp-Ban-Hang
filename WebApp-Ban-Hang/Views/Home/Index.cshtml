@@ -2,7 +2,209 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/content50.css">
+    <link rel="stylesheet" href="../css/content100.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>SGU-SHOP</title>
+</head>
+
+<body>
+
+    <div id="main-head">
+        <div id="header">
+            <img id="img_web" src="../img/singed.png">
+            <ul id="navigation">
+                <li> <a href="index.html">TRANG CHỦ</a></li>
+                <li>
+                    <a>PHONG CÁCH</a> <a class="ti-angle-down" id="css_ti_angle_down"></a>
+                    <ul class="style">
+                        <li> <a>Đơn giản</a></li>
+                        <li> <a>Lịch sự</a></li>
+                        <li> <a>Trưởng thành</a></li>
+                        <li> <a>Trẻ trung</a></li>
+                        <li> <a>Năng động</a></li>
+                    </ul>
+                </li>
+                <li> <a>KHUYẾN MÃI</a></li>
+                <li> <a>LIÊN HỆ</a></li>
+            </ul>
+            <div id="div_function">
+                <input id="search_box" placeholder="Tìm kiếm ..">
+                <div id="div_iconfunction">
+                    <i class="fa-solid fa-magnifying-glass icon_funtion"></i>
+                    <i class="fa-solid fa-user icon_funtion profile">
+                        <ul class="profile_container">
+                            <li><a href="login.html">Thông tin</a></li>
+                            <li><a href="">Đơn hàng của tôi</a></li>
+                            <li><a>Giỏ hàng</a></li>
+                            <li><a>Đăng xuất</a></li>
+                        </ul>
+                    </i>
+                    <i class="fa-solid fa-cart-shopping icon_funtion"></i>
+                </div>
+            </div>
+        </div>
+        <div id="div_menu">
+            <img id="icon_menu" src="../img/menu.png">
+            <div class="tab_menu">
+                <i class="fa-solid fa-circle-xmark close"></i>
+                <h1 id="title_menu">Danh mục sản phẩm </h1>
+                <ul id="content_menu">
+                    <li id="title_clothes" class="tab_list_menu">
+                        <a>Áo</a>
+                        <i class="ti-angle-down"></i>
+                        <ul class="list_clothes">
+                            <li><a>Áo Thun</a></li>
+                            <li><a>Áo Sơ mi</a></li>
+                            <li><a>Áo Polo</a></li>
+                            <li><a>Áo Khoác</a></li>
+                            <li><a>Áo Blazer</a></li>
+                            <li><a>Áo Hoodie</a></li>
+                        </ul>
+                    </li>
+                    <li id="title_trousers" class="tab_list_menu">
+                        <a>Quần</a>
+                        <i class="ti-angle-down"></i>
+                        <ul class="list_clothes">
+                            <li><a>Quần Jean</a></li>
+                            <li><a>Quần Tây</a></li>
+                            <li><a>Quần Jogger</a></li>
+                            <li><a>Quần Kaki</a></li>
+                            <li><a>Quần Baggy</a></li>
+                            <li><a>Quần Thun</a></li>
+                            <li><a>Quần Short</a></li>
+                        </ul>
+                    </li>
+                    <li id="title_accessories" class="tab_list_menu">
+                        <a>Phụ kiện</a>
+                        <i class="ti-angle-down"></i>
+                        <ul class="list_clothes">
+                            <li><a>Nón</a></li>
+                            <li><a>Kính</a></li>
+                            <li><a>Cà vạt</a></li>
+                            <li><a>Thắt lưng</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="range_slider_div">
+                    <h3 id="title_price">Khoảng giá: <span id="value_price"></span></h3>
+                    <input type="range" min="0" max="1000" value="0" class="slider_range" id="range">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content_50">
+        <div id="background_slider">
+            <div id="slider"></div>
+            <h2 id="title_shop" class="title_content">SGU - Shop</h2>
+            <h3 id="slogan" class="title_content">IF YOU LIKE THAT</h3>
+            <div id="div_sub_slogan"> <i class="fa-sharp fa-solid fa-user-astronaut" id="icon_clothes"></i> <h4 class="title_content sub_slogan"> Đồng hành cùng phong cách của bạn</h4> </div>
+            <i class="fa-regular fa-circle-down icon_down"></i>
+            <div id="list_slider">
+                <div id="slider_child1"></div>
+                <div id="slider_child2"></div>
+                <div id="slider_child_mid"></div>
+                <div id="slider_child4"></div>
+                <div id="slider_child5"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="banner">
+        <div id="banner_left">
+            <div class="banner_img1 banner_img"></div>
+            <div class="banner_img2 banner_img"></div>
+            <div class="banner_img3 banner_img"></div>
+            <div class="banner_img4 banner_img"></div>
+            <div class="banner_img5 banner_img"></div>
+        </div>
+        <div id="banner_right">
+            <div id="title_banner">
+                <h2 class="title_h2 h2_1">SALE</h2>
+                <h2 class="title_h2">UP TO</h2>
+            </div>
+            <div id="sale_imgbanner"></div>
+        </div>
+    </div>
+
+    <hr id="line">
+
+    <div id="content_100">
+        <div id="div_product">
+            <h1 id="title_product">Sản phẩm</h1>
+            <img id="icon_product" class="new" src="../img/new.png">
+        </div>
+
+        <div id="list_product">
+
+            <div class="product">
+                <div class="img_product"></div>
+                <div class="infor_product">
+                    <a class="name_product">Hoodie</a>
+                    <div class="div_price">
+                        <a class="price">300.000đ</a>
+                        <a class="old_price">450.000đ</a>
+                    </div>
+                </div>
+            </div>   
+        </div>
+        <button id="btn_seeall">Xem tất cả</button>
+    </div>
+
+    <div id="footer">
+        <h1 id="title_contact">Liên hệ</h1>
+        <div id="div_iconcontact">
+            <div id="icon_fb"></div>
+            <div id="icon_email"></div>
+            <div id="icon_phone"></div>
+        </div>
+
+        <div id="content_footer">
+            <div id="div_singed">
+                <h3>SGU-shop</h3>
+                <div id="img_singed"></div>
+            </div>
+            <div id="explore">
+                <ul id="explore_title">
+                    <h4>Khám phá</h4>
+                    <li><a>Trang chủ</a></li>
+                    <li><a>Giới thiệu</a></li>
+                    <li><a>Sản phẩm mới</a></li>
+                    <li><a>Giảm giá</a></li>
+                </ul>
+            </div>
+            <div id="policy">
+                <ul id="policy_title">
+                    <h4>Chính sách</h4>
+                    <li><a>Mua hàng</a></li>
+                    <li><a>Vận chuyển-giao hàng</a></li>
+                    <li><a>Đổi trả</a></li>
+                </ul>
+            </div>
+            <div id="support">
+                <ul id="support_title">
+                    <h4>Hỗ trợ</h4>
+                    <li><a>Câu hỏi thường gặp</a></li>
+                    <li><a>Thanh toán</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="end_footer">
+            <h3 class="title_endfooter">P/s : Website được lập bởi 1 nhóm nhỏ sinh viên  Đại học Sài Gòn</h3>
+            <h3 class="title_endfooter endfooter2">* Website được hoàn thiện ngày : 27/2/2023</h3>
+            <h3 id="title_address">Địa chỉ : Trụ sở chính/ 273 An Dương Vương – Phường 3 – Quận 5</h3>
+        </div>
+    </div>
+    <script src="../JavaScript/test.js"></script>
+</body>
+</html>
+
