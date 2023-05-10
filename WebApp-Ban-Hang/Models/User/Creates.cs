@@ -6,6 +6,7 @@ namespace WebApp_Ban_Hang.Models.User
     public class Creates
     {
         [Key]
+
         [Display(Name = "ID Người Dùng")]
         public int IdUser { get; set; }
         [Required, MaxLength(50)]

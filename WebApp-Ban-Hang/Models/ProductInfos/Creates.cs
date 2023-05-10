@@ -11,6 +11,9 @@ namespace WebApp_Ban_Hang.Models.ProductInfos
         public int Info_ID { get; set; }
         [Display(Name = "Dòng Sản Phẩm")]
         public string Product_Line { get; set; }
+
+        
+
         [Display(Name = "Thông Tin Sản Phẩm")]
         public string Product_Infomation { get; set; }
     }

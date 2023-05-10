@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Drawing;
 using WebApp_Ban_Hang.Entity;
 using WebApp_Ban_Hang.Models.Products;
 using WebApp_Ban_Hang.Services.Products;
@@ -43,7 +44,7 @@ namespace WebApp_Ban_Hang.Controllers
                 {
                     Product_Line = model.Product_Line,
                     Product_Name = model.Product_Name,
-                    Thumbnail = model.Thumbnail,
+                 
                     Price= model.Price,
                     Discount= model.Discount,
                     Create_At = model.Create_At,
@@ -52,7 +53,21 @@ namespace WebApp_Ban_Hang.Controllers
                     BrandId = model.BrandId,
                     CategoryID = model.CategoryID,
                 };
+                if (model.Thumbnail != null && model.Thumbnail.Length > 0)
+                {
+                    var uploadDir = @"images/Products";
+                    var fileName = Path.GetFileNameWithoutExtension(model.Thumbnail.FileName);
+                    var extension = Path.GetExtension(model.Thumbnail.FileName);
+                    var webRootPath = webHostEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yyyymmssfff") + fileName + extension;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.Thumbnail.CopyToAsync(new FileStream(path, FileMode.Create));
+                    product.Thumbnail = "/" + uploadDir + "/" + fileName;
+                    await productServices.CreateAsSync(product);
+                    return RedirectToAction("index");
+                }
             }
+             
             return View();
         }
         [HttpGet]
