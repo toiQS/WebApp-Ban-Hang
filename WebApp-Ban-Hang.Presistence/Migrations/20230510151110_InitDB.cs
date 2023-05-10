@@ -117,7 +117,7 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductImage",
+                name: "Productimage",
                 columns: table => new
                 {
                     ImageID = table.Column<int>(type: "int", maxLength: 11, nullable: false)
@@ -127,9 +127,9 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductImage", x => x.ImageID);
+                    table.PrimaryKey("PK_Productimage", x => x.ImageID);
                     table.ForeignKey(
-                        name: "FK_ProductImage_Product_ProductLine",
+                        name: "FK_Productimage_Product_ProductLine",
                         column: x => x.ProductLine,
                         principalTable: "Product",
                         principalColumn: "Product_Line",
@@ -137,7 +137,7 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductInfo",
+                name: "Productinfo",
                 columns: table => new
                 {
                     Info_ID = table.Column<int>(type: "int", maxLength: 10, nullable: false)
@@ -147,9 +147,9 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductInfo", x => x.Info_ID);
+                    table.PrimaryKey("PK_Productinfo", x => x.Info_ID);
                     table.ForeignKey(
-                        name: "FK_ProductInfo_Product_Product_Line",
+                        name: "FK_Productinfo_Product_Product_Line",
                         column: x => x.Product_Line,
                         principalTable: "Product",
                         principalColumn: "Product_Line",
@@ -157,7 +157,7 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductWarranty",
+                name: "Productwarranty",
                 columns: table => new
                 {
                     Product_ID = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -167,9 +167,9 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductWarranty", x => x.Product_ID);
+                    table.PrimaryKey("PK_Productwarranty", x => x.Product_ID);
                     table.ForeignKey(
-                        name: "FK_ProductWarranty_Product_Product_Line",
+                        name: "FK_Productwarranty_Product_Product_Line",
                         column: x => x.Product_Line,
                         principalTable: "Product",
                         principalColumn: "Product_Line",
@@ -197,18 +197,18 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 column: "CategoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductImage_ProductLine",
-                table: "ProductImage",
+                name: "IX_Productimage_ProductLine",
+                table: "Productimage",
                 column: "ProductLine");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductInfo_Product_Line",
-                table: "ProductInfo",
+                name: "IX_Productinfo_Product_Line",
+                table: "Productinfo",
                 column: "Product_Line");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductWarranty_Product_Line",
-                table: "ProductWarranty",
+                name: "IX_Productwarranty_Product_Line",
+                table: "Productwarranty",
                 column: "Product_Line");
         }
 
@@ -219,13 +219,13 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 name: "Order");
 
             migrationBuilder.DropTable(
-                name: "ProductImage");
+                name: "Productimage");
 
             migrationBuilder.DropTable(
-                name: "ProductInfo");
+                name: "Productinfo");
 
             migrationBuilder.DropTable(
-                name: "ProductWarranty");
+                name: "Productwarranty");
 
             migrationBuilder.DropTable(
                 name: "User");

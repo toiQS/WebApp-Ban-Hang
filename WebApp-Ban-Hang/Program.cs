@@ -24,7 +24,7 @@ builder.Services.AddControllersWithViews();
 // Add Services
 builder.Services.AddScoped<IBrandServices, BrandServices>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
-builder.Services.AddScoped<IOrderServices,OrderServices>();
+builder.Services.AddScoped<IOrderServices, OrderServices>();
 builder.Services.AddScoped<IProductImageServices, ProductImageServices>();
 builder.Services.AddScoped<IProductInfoServices, ProductInfoServices>();
 builder.Services.AddScoped<IProductServices, ProductServices>();

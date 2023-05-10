@@ -8,7 +8,7 @@ namespace WebApp_Ban_Hang.Services.ProductInfos
         private ApplicationDbContext _context;
         public ProductInfoServices(ApplicationDbContext context)
         {
-              _context = context;
+            _context = context;
         }
         public IEnumerable<ProductInfo> ViewAll()
         {

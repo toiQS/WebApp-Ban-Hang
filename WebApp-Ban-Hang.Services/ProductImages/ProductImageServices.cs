@@ -11,7 +11,7 @@ namespace WebApp_Ban_Hang.Services.ProductImages
         {
             _context = context;
         }
-         public IEnumerable<ProductImage> ViewAll()
+        public IEnumerable<ProductImage> ViewAll()
         {
             return _context.ProductImage.ToList();
         }

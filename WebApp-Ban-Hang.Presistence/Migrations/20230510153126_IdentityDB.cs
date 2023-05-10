@@ -6,11 +6,77 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebApp_Ban_Hang.Presistence.Migrations
 {
     /// <inheritdoc />
-    public partial class IdentityUser : Migration
+    public partial class IdentityDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Productimage_Product_ProductLine",
+                table: "Productimage");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Productinfo_Product_Product_Line",
+                table: "Productinfo");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Productwarranty_Product_Product_Line",
+                table: "Productwarranty");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Productwarranty",
+                table: "Productwarranty");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Productinfo",
+                table: "Productinfo");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Productimage",
+                table: "Productimage");
+
+            migrationBuilder.RenameTable(
+                name: "Productwarranty",
+                newName: "ProductWarranty");
+
+            migrationBuilder.RenameTable(
+                name: "Productinfo",
+                newName: "ProductInfo");
+
+            migrationBuilder.RenameTable(
+                name: "Productimage",
+                newName: "ProductImage");
+
+            migrationBuilder.RenameIndex(
+                name: "IX_Productwarranty_Product_Line",
+                table: "ProductWarranty",
+                newName: "IX_ProductWarranty_Product_Line");
+
+            migrationBuilder.RenameIndex(
+                name: "IX_Productinfo_Product_Line",
+                table: "ProductInfo",
+                newName: "IX_ProductInfo_Product_Line");
+
+            migrationBuilder.RenameIndex(
+                name: "IX_Productimage_ProductLine",
+                table: "ProductImage",
+                newName: "IX_ProductImage_ProductLine");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_ProductWarranty",
+                table: "ProductWarranty",
+                column: "Product_ID");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_ProductInfo",
+                table: "ProductInfo",
+                column: "Info_ID");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_ProductImage",
+                table: "ProductImage",
+                column: "ImageID");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -194,11 +260,47 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_ProductImage_Product_ProductLine",
+                table: "ProductImage",
+                column: "ProductLine",
+                principalTable: "Product",
+                principalColumn: "Product_Line",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_ProductInfo_Product_Product_Line",
+                table: "ProductInfo",
+                column: "Product_Line",
+                principalTable: "Product",
+                principalColumn: "Product_Line",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_ProductWarranty_Product_Product_Line",
+                table: "ProductWarranty",
+                column: "Product_Line",
+                principalTable: "Product",
+                principalColumn: "Product_Line",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_ProductImage_Product_ProductLine",
+                table: "ProductImage");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_ProductInfo_Product_Product_Line",
+                table: "ProductInfo");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_ProductWarranty_Product_Product_Line",
+                table: "ProductWarranty");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -219,6 +321,84 @@ namespace WebApp_Ban_Hang.Presistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_ProductWarranty",
+                table: "ProductWarranty");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_ProductInfo",
+                table: "ProductInfo");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_ProductImage",
+                table: "ProductImage");
+
+            migrationBuilder.RenameTable(
+                name: "ProductWarranty",
+                newName: "Productwarranty");
+
+            migrationBuilder.RenameTable(
+                name: "ProductInfo",
+                newName: "Productinfo");
+
+            migrationBuilder.RenameTable(
+                name: "ProductImage",
+                newName: "Productimage");
+
+            migrationBuilder.RenameIndex(
+                name: "IX_ProductWarranty_Product_Line",
+                table: "Productwarranty",
+                newName: "IX_Productwarranty_Product_Line");
+
+            migrationBuilder.RenameIndex(
+                name: "IX_ProductInfo_Product_Line",
+                table: "Productinfo",
+                newName: "IX_Productinfo_Product_Line");
+
+            migrationBuilder.RenameIndex(
+                name: "IX_ProductImage_ProductLine",
+                table: "Productimage",
+                newName: "IX_Productimage_ProductLine");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Productwarranty",
+                table: "Productwarranty",
+                column: "Product_ID");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Productinfo",
+                table: "Productinfo",
+                column: "Info_ID");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Productimage",
+                table: "Productimage",
+                column: "ImageID");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Productimage_Product_ProductLine",
+                table: "Productimage",
+                column: "ProductLine",
+                principalTable: "Product",
+                principalColumn: "Product_Line",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Productinfo_Product_Product_Line",
+                table: "Productinfo",
+                column: "Product_Line",
+                principalTable: "Product",
+                principalColumn: "Product_Line",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Productwarranty_Product_Product_Line",
+                table: "Productwarranty",
+                column: "Product_Line",
+                principalTable: "Product",
+                principalColumn: "Product_Line",
+                onDelete: ReferentialAction.Cascade);
         }
     }
 }
