@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 using WebApp_Ban_Hang.Entity;
 using WebApp_Ban_Hang.Models.Categorys;
 using WebApp_Ban_Hang.Services.Categorys;
@@ -21,7 +22,8 @@ namespace WebApp_Ban_Hang.Controllers
             {
                 CategoryName = category.CategoryName
             });
-            return View(model);
+            return Json(model);
+            //return View(model);
         }
         [HttpGet]
         public IActionResult Details(int id)
@@ -34,6 +36,7 @@ namespace WebApp_Ban_Hang.Controllers
                 CategoryName = category.CategoryName,
                 CategoryID = category.CategoryID
             };
+             
             return View(model);
         }
         [HttpGet]
@@ -90,7 +93,8 @@ namespace WebApp_Ban_Hang.Controllers
             {
                 CategoryID = category.CategoryID,
             };
-            return View(model);
+            return Json(model);
+            //return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)

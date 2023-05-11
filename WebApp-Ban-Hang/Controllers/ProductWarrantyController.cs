@@ -25,13 +25,13 @@ namespace WebApp_Ban_Hang.Controllers
                 Purchased_At = warranty.Purchased_At,
                 Warranty_Period = warranty.Warranty_Period
             });
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -64,7 +64,7 @@ namespace WebApp_Ban_Hang.Controllers
                 Purchased_At = warranty.Purchased_At,
                 Warranty_Period = warranty.Warranty_Period
             };
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Edit(string id)
@@ -81,7 +81,7 @@ namespace WebApp_Ban_Hang.Controllers
                 Purchased_At = warrany.Purchased_At,
                 Warranty_Period = warrany.Warranty_Period
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -108,7 +108,7 @@ namespace WebApp_Ban_Hang.Controllers
             {
                 Product_ID = id,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)

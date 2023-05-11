@@ -23,13 +23,13 @@ namespace WebApp_Ban_Hang.Controllers
                 ProductLine = images.ProductLine,
                 ImageURL = images.ImageURL,
             });
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -72,7 +72,7 @@ namespace WebApp_Ban_Hang.Controllers
                 ProductLine = image.ProductLine,
                 ImageURL = image.ImageURL,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Edit(int id)
@@ -88,7 +88,7 @@ namespace WebApp_Ban_Hang.Controllers
                 ProductLine = image.ProductLine,
                 ImageURL = image.ImageURL,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -116,7 +116,7 @@ namespace WebApp_Ban_Hang.Controllers
             {
                 ImageID = images.ImageID,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)

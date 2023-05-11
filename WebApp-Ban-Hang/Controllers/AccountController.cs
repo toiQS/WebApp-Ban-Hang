@@ -25,7 +25,7 @@ namespace WebApp_Ban_Hang.Controllers
         public IActionResult Register()
         {
             var model = new CreateUser();
-            return View(model);
+            return Json(model);
         }
 
         [HttpPost]
@@ -62,7 +62,7 @@ namespace WebApp_Ban_Hang.Controllers
         public IActionResult Login()
         {
             var model = new LoginUser();
-            return View(model);
+            return Json(model);
         }
 
         [HttpPost]
