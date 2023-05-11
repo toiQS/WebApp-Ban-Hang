@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp_Ban_Hang.Entity;
 using WebApp_Ban_Hang.Models.Brands;
 using WebApp_Ban_Hang.Services.Brands;
 
@@ -103,10 +104,20 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        public async Task<IActionResult> Sort(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["BrandNameSortParm"] = sortOrder == "BrandName" ? "BrandName" : "BrandName_desc";
             ViewData["BrandIdSortParm"] = sortOrder == "BrandId" ? "BrandId" : "BrandId_desc";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             ViewData["CurrentFilter"] = searchString;
             var brand = _services.ViewAll();
             if (!String.IsNullOrEmpty(searchString))
@@ -132,7 +143,8 @@ namespace WebApp_Ban_Hang.Controllers
                     brand = brand.OrderBy(s => s.BrandName);
                     break;
             }
-            return View(brand);
+            int pageSize = 5;
+            return View(await PaginatedList<Brand>.CreateAsync((IQueryable<Brand>)brand, pageNumber ?? 1, pageSize));
         }
     }
 }

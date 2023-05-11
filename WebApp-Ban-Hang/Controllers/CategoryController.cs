@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp_Ban_Hang.Entity;
 using WebApp_Ban_Hang.Models.Categorys;
 using WebApp_Ban_Hang.Services.Categorys;
 
@@ -101,10 +102,20 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> Sort(string sortOrder, string searchString)
+        public async Task<IActionResult> Sort(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["CategoryNameSortParm"] = sortOrder == "CategoryName" ? "CategoryName" : "CategoryName_desc";
             ViewData["CategoryIdSortParm"] = sortOrder == "CategoryId" ? "CategoryId" : "CategoryId_desc";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             ViewData["CurrentFilter"] = searchString;
             var Category = _services.ViewAll();
             if (!String.IsNullOrEmpty(searchString))
@@ -130,7 +141,8 @@ namespace WebApp_Ban_Hang.Controllers
                     Category = Category.OrderBy(s => s.CategoryName);
                     break;
             }
-            return View(Category);
+            int pageSize = 8;
+            return View(await PaginatedList<Category>.CreateAsync((IQueryable<Category>)Category, pageNumber ?? 1, pageSize));
         }
     }
 }
