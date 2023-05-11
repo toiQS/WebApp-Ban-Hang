@@ -16,6 +16,7 @@ namespace WebApp_Ban_Hang.Controllers
             _services = services;
             _webHostEnvironment = webHostEnvironment;
         }
+        // GET: /User/
         [HttpGet]
         public IActionResult Index()
         {
@@ -28,6 +29,7 @@ namespace WebApp_Ban_Hang.Controllers
             });
             return Json(model);
         }
+        // GET: /User/Detail/5
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -48,12 +50,14 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // GET: /User/Create
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
             return Json(model);
         }
+        // POST: /User/Create
         [HttpPost]
         public async Task<IActionResult> Create(Creates model)
         {
@@ -73,6 +77,7 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View(model);
         }
+        // GET: /User/Edit/1
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -92,6 +97,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /User/Edit/1
         [HttpPost]
         public async Task<IActionResult> Edit(Edits model)
         {
@@ -106,6 +112,7 @@ namespace WebApp_Ban_Hang.Controllers
             user.Phone = model.Phone;
             return View();
         }
+        // GET: /User/Delete/2
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -118,6 +125,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /User/Delete/2
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)
         {

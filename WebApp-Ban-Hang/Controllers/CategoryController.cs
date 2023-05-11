@@ -15,6 +15,7 @@ namespace WebApp_Ban_Hang.Controllers
             _services = services;
             _webHostEnvironment = webHostEnvironment;
         }
+        // GET: /Category/
         [HttpGet]
         public IActionResult Index()
         {
@@ -25,6 +26,7 @@ namespace WebApp_Ban_Hang.Controllers
             return Json(model);
             //return View(model);
         }
+        // GET: /Category/Detail/4
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -39,12 +41,14 @@ namespace WebApp_Ban_Hang.Controllers
              
             return View(model);
         }
+        // GET: /Category/Create
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
             return View(model);
         }
+        // POST: /Category/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Creates model)
@@ -59,6 +63,7 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        // GET: /Category/Edit/5
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -72,6 +77,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return View(model);
         }
+        // POST: /Category/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Edits model)
@@ -83,6 +89,7 @@ namespace WebApp_Ban_Hang.Controllers
             category.CategoryID = model.CategoryID;
             return View();
         }
+        // GET: /Category/Delete/3
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -96,6 +103,7 @@ namespace WebApp_Ban_Hang.Controllers
             return Json(model);
             //return View(model);
         }
+        // POST: /Category/Delete/3
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)
         {

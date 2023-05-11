@@ -15,6 +15,7 @@ namespace WebApp_Ban_Hang.Controllers
             _services = services;
             _webHostEnvironment = webHostEnvironment;
         }
+        // GET: /ProductInfo/
         [HttpGet]
         public IActionResult Index()
         {
@@ -24,6 +25,7 @@ namespace WebApp_Ban_Hang.Controllers
             }) ;
             return Json(model);
         }
+        // GET: /ProductInfo/Detail/3
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -38,12 +40,14 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // GET: /ProductInfo/Create
         [HttpGet]
         public IActionResult Create()
         {
             var info = new Creates();
             return Json(info);
         }
+        // POST: /ProductInfo/Create
         [HttpPost]
         public async Task<IActionResult> Create(Creates info)
         {
@@ -58,6 +62,7 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        // GET: /ProductInfo/Edit/3
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -72,6 +77,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /ProductInfo/Edit/3
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Edits info)
@@ -84,6 +90,7 @@ namespace WebApp_Ban_Hang.Controllers
             info.Product_Infomation = current.Product_Infomation;
             return View();
         }
+        // GET: /ProductInfo/Delete/4
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -96,6 +103,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /ProductInfo/Delete/4
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)
         {
