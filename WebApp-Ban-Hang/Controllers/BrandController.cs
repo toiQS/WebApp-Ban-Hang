@@ -5,6 +5,7 @@ using WebApp_Ban_Hang.Services.Brands;
 
 namespace WebApp_Ban_Hang.Controllers
 {
+    [Route("api/[controller]")]
     public class BrandController : Controller
     {
         private IWebHostEnvironment env;
