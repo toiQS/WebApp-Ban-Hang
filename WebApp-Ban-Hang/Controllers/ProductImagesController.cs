@@ -14,7 +14,7 @@ namespace WebApp_Ban_Hang.Controllers
             this.webHostEnvironment = webHostEnvironment;
             this.imageServices = imageServices;
         }
-
+        // GET: /ProductImages/
         [HttpGet]
         public IActionResult Index()
         {
@@ -25,12 +25,14 @@ namespace WebApp_Ban_Hang.Controllers
             });
             return Json(model);
         }
+        // GET: /ProductImages/Create
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
             return Json(model);
         }
+        // POST: /ProductImages/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task <IActionResult> Create(Creates model)
@@ -58,6 +60,7 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        // GET: /ProductImages/Detail/5
         [HttpGet]
         public IActionResult Detail(int id)
         {
@@ -74,6 +77,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // GET: /ProductImages/Edit/2
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -90,6 +94,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        //  POST: /ProductImages/Edit/2
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Edits model)
@@ -104,6 +109,7 @@ namespace WebApp_Ban_Hang.Controllers
             images.ImageURL = model.ImageURL;
             return View();
         }
+        // GET: /ProductImages/Delete/1
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -118,6 +124,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /ProductImages/Delete/1
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)
         {

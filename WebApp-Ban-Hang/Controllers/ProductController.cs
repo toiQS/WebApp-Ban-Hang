@@ -15,7 +15,7 @@ namespace WebApp_Ban_Hang.Controllers
             this.productServices = productServices;
             this.webHostEnvironment = webHostEnvironment;
         }
-       
+        // GET: /Product/
         [HttpGet]
         public IActionResult Index()
         {
@@ -28,12 +28,14 @@ namespace WebApp_Ban_Hang.Controllers
             }) ;
             return Json(model);
         }
+        // GET: /Product/Create
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
             return Json(model);
         }
+        // POST: /Product/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Creates model)
@@ -70,6 +72,7 @@ namespace WebApp_Ban_Hang.Controllers
              
             return View();
         }
+        // GET: /Product/Detail/3
         [HttpGet]
         public IActionResult Detail(string id)
         {
@@ -93,6 +96,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // GET: /Product/Edit/1
         [HttpGet]
         public IActionResult Edit(string id)
         {
@@ -116,6 +120,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /Product/Edit/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Details model)
@@ -134,6 +139,7 @@ namespace WebApp_Ban_Hang.Controllers
             product.CategoryID = model.CategoryID;
             return View();
         }
+        // GET: /Product/Delete/2
         [HttpGet]
         public IActionResult Detele(string id)
         {
@@ -148,6 +154,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // GET: /Product/Delete/2
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)
         {

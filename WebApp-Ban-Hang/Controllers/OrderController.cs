@@ -17,6 +17,7 @@ namespace WebApp_Ban_Hang.Controllers
             _service = service;
             _webHostEnvironment = webHostEnvironment;
         }
+        // GET: /Order/
         [HttpGet]
         public IActionResult Index()
         {
@@ -30,6 +31,7 @@ namespace WebApp_Ban_Hang.Controllers
             });
             return Json(model);
         }
+        // GET: /Order/Create
         [HttpGet]
         public IActionResult Create() {
             var model = new Creates();
@@ -52,6 +54,7 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        // GET: /Order/Detail/2
         [HttpGet]
         public IActionResult Detail(int id) {
             var order = _service.FindById(id);
@@ -69,6 +72,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // GET: /Order/Edit/1
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -87,6 +91,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /Order/Edit/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Edits model)
@@ -104,6 +109,7 @@ namespace WebApp_Ban_Hang.Controllers
             order.Total = total - (total * _productServices.FindById(model.IdProduct).Discount / 100);
             return View();
         }
+        // GET: /Order/Delete/4
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -118,6 +124,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /Order/Delete/4
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)
         {

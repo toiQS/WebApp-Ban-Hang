@@ -16,6 +16,7 @@ namespace WebApp_Ban_Hang.Controllers
             _services = services;
             _environment = environment;
         }
+        // GET: /ProductWarranty/
         [HttpGet]
         public IActionResult Index()
         {
@@ -27,12 +28,14 @@ namespace WebApp_Ban_Hang.Controllers
             });
             return Json(model);
         }
+        // GET: /ProductWarranty/Create
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
             return Json(model);
         }
+        // POST: /ProductWarranty/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Creates model)
@@ -49,6 +52,7 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        // GET: /ProductWarranty/Detail/2
         [HttpGet]
         public IActionResult Detail(string id)
         {
@@ -66,6 +70,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // GET: /ProductWarranty/Edit/4
         [HttpGet]
         public IActionResult Edit(string id)
         {
@@ -83,6 +88,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /ProductWarranty/Edit/4
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Edits model)
@@ -98,6 +104,7 @@ namespace WebApp_Ban_Hang.Controllers
             model.Purchased_At = warranty.Purchased_At;
             return View();
         }
+        // GET: /ProductWarranty/Delete/5
         [HttpGet]
         public IActionResult Delete(string id)
         {
@@ -110,6 +117,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // POST: /ProductWarranty/Delete/5
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)
         {
