@@ -14,6 +14,7 @@ namespace WebApp_Ban_Hang.Controllers
             this.env = env;
             _services = services;
         }
+        // GET: /Brand/
         [HttpGet]
         public IActionResult Index()
         {
@@ -24,6 +25,7 @@ namespace WebApp_Ban_Hang.Controllers
             });
             return Json(model);
         }
+        // GET: /Brand/Detail/5
         [HttpGet]
         public IActionResult Detail(string id)
         {
@@ -37,12 +39,14 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // GET: /Brand/Create
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
             return Json(model);
         }
+        // POST: Brand/Create
         [HttpPost]
         public async Task<IActionResult> Create(Creates model)
         {
@@ -57,6 +61,7 @@ namespace WebApp_Ban_Hang.Controllers
             }
             return View();
         }
+        // GET: /Brand/Edit/3
         [HttpGet]
         public IActionResult Edit(string id)
         {
@@ -70,6 +75,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // Post: /Brand/Edit/3
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Edits model)
@@ -81,6 +87,7 @@ namespace WebApp_Ban_Hang.Controllers
             brand.BrandName = model.BrandName;
             return View();
         }
+        // GET: Brand/Delete/2
         [HttpGet]
         public IActionResult Delete(string id)
         {
@@ -94,6 +101,7 @@ namespace WebApp_Ban_Hang.Controllers
             };
             return Json(model);
         }
+        // Post: Brand/Delete/2
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)
         {
