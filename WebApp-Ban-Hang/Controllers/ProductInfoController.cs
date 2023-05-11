@@ -22,7 +22,7 @@ namespace WebApp_Ban_Hang.Controllers
             {
                 Product_Line = info.Product_Line,
             }) ;
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Details(int id)
@@ -36,13 +36,13 @@ namespace WebApp_Ban_Hang.Controllers
                 Product_Line = info.Product_Line,
                 Product_Infomation = info.Product_Infomation
             };
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Create()
         {
             var info = new Creates();
-            return View(info);
+            return Json(info);
         }
         [HttpPost]
         public async Task<IActionResult> Create(Creates info)
@@ -70,7 +70,7 @@ namespace WebApp_Ban_Hang.Controllers
                 Product_Line = info.Product_Line,
                 Product_Infomation = info.Product_Infomation
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -94,7 +94,7 @@ namespace WebApp_Ban_Hang.Controllers
             {
                 Info_ID = info.Info_ID
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)

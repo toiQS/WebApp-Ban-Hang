@@ -22,7 +22,7 @@ namespace WebApp_Ban_Hang.Controllers
                 BrandName = brand.BrandName,
 
             });
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Detail(string id)
@@ -35,13 +35,13 @@ namespace WebApp_Ban_Hang.Controllers
                 BrandId = brand.BrandId,
                 BrandName = brand.BrandName,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         public async Task<IActionResult> Create(Creates model)
@@ -68,7 +68,7 @@ namespace WebApp_Ban_Hang.Controllers
                 BrandId = brand.BrandId,
                 BrandName = brand.BrandName,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -92,7 +92,7 @@ namespace WebApp_Ban_Hang.Controllers
                 BrandId = brand.BrandId,
                 
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)

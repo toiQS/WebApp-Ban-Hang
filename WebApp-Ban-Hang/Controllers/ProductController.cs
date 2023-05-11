@@ -25,13 +25,13 @@ namespace WebApp_Ban_Hang.Controllers
                 Discount = product.Discount,
                 Price = product.Price,
             }) ;
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -76,7 +76,7 @@ namespace WebApp_Ban_Hang.Controllers
                 BrandId = product.BrandId,
                 CategoryID = product.CategoryID,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Edit(string id)
@@ -99,7 +99,7 @@ namespace WebApp_Ban_Hang.Controllers
                 BrandId = product.BrandId,
                 CategoryID = product.CategoryID,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -131,7 +131,7 @@ namespace WebApp_Ban_Hang.Controllers
             {
                 Product_Line = product.Product_Line,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)

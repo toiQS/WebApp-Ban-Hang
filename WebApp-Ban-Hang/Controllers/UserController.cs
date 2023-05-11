@@ -26,7 +26,7 @@ namespace WebApp_Ban_Hang.Controllers
                 MiddleName = user.MiddleName,
                 ImageUrl = user.ImageUrl,
             });
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Details(int id)
@@ -46,13 +46,13 @@ namespace WebApp_Ban_Hang.Controllers
                 FullName = user.FullName,
                 Phone = user.Phone,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpGet]
         public IActionResult Create()
         {
             var model = new Creates();
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         public async Task<IActionResult> Create(Creates model)
@@ -90,7 +90,7 @@ namespace WebApp_Ban_Hang.Controllers
                 ImageUrl = user.ImageUrl,
                 Phone = user.Phone,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(Edits model)
@@ -116,7 +116,7 @@ namespace WebApp_Ban_Hang.Controllers
             {
                 IdUser = user.IdUser,
             };
-            return View(model);
+            return Json(model);
         }
         [HttpPost]
         public async Task<IActionResult> Delete(Deletes model)
