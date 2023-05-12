@@ -31,7 +31,9 @@ builder.Services.AddScoped<IProductServices, ProductServices>();
 builder.Services.AddScoped<IProductWarrantyServices, ProductWarrantyServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 
-//setting configure application cookie
+//setting configure
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
@@ -40,7 +42,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
-    
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("./swagger/v1/swagger.json", "v1");
+        options.RoutePrefix = string.Empty;
+    });
 }
 else
 {
